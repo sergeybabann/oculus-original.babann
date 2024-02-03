@@ -1,0 +1,616 @@
+@font-face {
+  font-family: "Helvetica", sans-serif;
+  src: url(../fonts/helvetica.woff2);
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Helvetica-Bold", sans-serif;
+  src: url(../fonts/helvetica-bold.woff2);
+  font-style: normal;
+  font-weight: 700;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #5c5c5e;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  color: inherit;
+  font-size: inherit;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+
+.container {
+  /* контейнер для всего header */
+  max-width: 1220px; /* учитываем паддинги которые по 10px прибавляем их и поэтому получается не 1200px , а 1220px */
+  padding: 0 10px; /* сверху и снизу 0 по бокам 10px */
+  margin: 0 auto; /* центрирование */
+}
+
+.section-title {
+  /* класс для многократного применения */
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/*---------- HEADER ----------*/
+.header {
+  border-bottom: 1px solid #cacad6;
+}
+
+.nav {
+  /* навигационное меню в хедере */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  height: 80px;
+}
+
+.menu {
+  /* ul для навигационного меню в хедере */
+  display: flex;
+  gap: 0 20px; /* сверху и снизу 0 по бокам между элементами 20px */
+}
+
+.logo {
+  justify-self: center;
+}
+
+.basket {
+  /* корзина в хедере */
+  position: relative;
+  justify-self: end;
+}
+
+.basket--on span {
+  /* этот класс basket--on для того,чтобы появлялась цифра в корзине, по умолчанию
+  в верстке он не подключен в html-разметке, если добавить этот класс вторым классом
+  к классу basket в html-разметке, то появится цифра в корзине */
+  font-size: 11px;
+  width: 15px;
+  height: 15px;
+  background-color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  position: absolute;
+  bottom: 8px;
+  right: -2px;
+  padding: 9px 0 0 0;
+}
+
+/*---------- SECTION TOP ----------*/
+.top {
+  /* для большой фоновой картинки в секции top */
+  min-height: calc(100vh - 81px); /* 81px потому, что height 80px + border) */
+  background-image: url(../images/top-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+}
+
+.title {
+  padding-top: 16%;
+  font-size: 96px;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.subtitle {
+  font-size: 36px;
+  margin-bottom: 5px;
+}
+
+.top__text {
+  font-size: 13px;
+  margin-bottom: 50px;
+}
+
+.buy__text {
+  padding-top: 6px;
+  font-size: 13px;
+}
+
+/*----- Стили кнопки -----*/
+.buy-btn {
+  /* кнопка в секции top */
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(
+    180deg,
+    #bc10d8 0%,
+    rgba(79.9, 0, 249.69, 0.93) 100%
+  );
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+  display: flex;
+  padding: 0;
+  text-transform: uppercase;
+  padding: 1px;
+}
+
+.buy-btn__text {
+  /* стили для кнопки с текстом BUY NOW */
+  color: #f6f4f5;
+  padding: 20px 110px; /* сверху и снизу 20px, по бокам 110px */
+  text-transform: uppercase;
+}
+
+.buy-btn__price {
+  /* стили для кнопки с текстом 399.9 USD */
+  background-color: #f6f4f5;
+  padding: 20px 105px; /* сверху и сниху 20px, по бокам 105px */
+}
+
+/*---------- SECTION FEATURES ----------*/
+.features {
+  padding: 100px 0; /* сверху 100 по бокам 0 */
+}
+
+.features__titles {
+  display: flex;
+}
+
+.features__title {
+  flex-basis: 300px;
+  padding-right: 20px;
+}
+
+.features__text {
+  max-width: 330px;
+  font-size: 36px;
+  text-transform: uppercase;
+  margin-bottom: 2px; /* в макете 20px, в видео 2px; */
+  background: var(
+    --gradient,
+    linear-gradient(180deg, #bc10d8 0%, rgba(80, 0, 250, 0.93) 100%)
+  );
+  /* background-clip: text; */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: 300px auto;
+}
+
+.tabs__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.tabs__btn-item {
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.tabs__btn-item--active {
+  color: #070707;
+}
+
+.tabs__content {
+  position: relative;
+  min-height: 300px; /* min-height: 300px для того, чтобы работал padding
+  (когда наводим в панели разработчика в браузере на <section class="features"> на нем нет паддинга, потому, что в tabs__content-item
+  стоит position absolute, который отсекает все и padding перестает работать */
+}
+
+.tabs__content-item {
+  display: grid;
+  grid-template-columns: auto 280px;
+  grid-template-rows: auto 150px;
+  gap: 40px;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.3s ease;
+}
+
+.tabs__content-item--active {
+  opacity: 1;
+}
+
+.tabs__content-img {
+  grid-row: 1/-1;
+  align-self: stretch;
+}
+
+.tabs__content-box h3 {
+  font-weight: 400;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.video {
+  grid-column: 2/3;
+  width: 280px;
+  height: 150px;
+  background-image: url(../images/content-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: start;
+  padding: 9px 10px; /* 9 сверху и снизу 10 по бокам */
+}
+
+.video__btn {
+  margin-left: 22px;
+}
+
+.video span {
+  font-size: 13px;
+  color: #f6f4f5;
+}
+
+/*---------- SECTION GAME ----------*/
+.game {
+  margin-bottom: 100px;
+}
+
+.game__title {
+  margin-bottom: 50px;
+}
+
+.game__inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.game__link {
+  text-transform: uppercase;
+}
+
+.game__descr {
+  padding-right: 10px;
+}
+
+.game__descr-title {
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #bc10d8 0%, rgba(80, 0, 250, 0.93) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.game__descr-text {
+  margin-bottom: 24px;
+}
+
+.game__link {
+  display: inline-block;
+  background: linear-gradient(180deg, #bc10d8 0%, rgba(80, 0, 250, 0.93) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 16px 15px 12px; /* сверху 16px, по бокам 15px, снизу 12px  */
+  border: 1px solid #bc10d8;
+  width: 225px;
+  text-align: center;
+  border: 1px solid;
+  border-image: linear-gradient(180deg, #bc10d8 0%, rgba(80, 0, 250, 0.93) 100%)
+    1; /*-- без цифры 1 не появляется border --*/
+}
+
+.game__item {
+  border: 1px solid;
+  border-image: linear-gradient(180deg, #bc10d8 0%, rgba(80, 0, 250, 0.93) 100%)
+    1; /*-- без цифры 1 не появляется border --*/
+  padding: 10px 20px 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.game__item-img {
+  margin-bottom: 10px;
+}
+
+.game__item-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.game__item-text {
+  margin-bottom: 30px;
+}
+
+.game__item-link {
+  background: linear-gradient(180deg, #bc10d8 0%, rgba(80, 0, 250, 0.93) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: auto; /* margin-top: auto; прижимаем элемент к низу, и у родителя должны стоять  display: flex;
+  flex-direction: column; */
+}
+
+/*----- BUY -----*/
+.buy {
+  margin-bottom: 110px;
+  text-align: center;
+  position: relative; /* родитель класса buy__bg */
+  overflow-x: hidden; /* скрываем нижний scroll */
+}
+
+.buy__img {
+  margin-bottom: 30px;
+}
+
+.buy .buy-btn {
+  margin: 0 auto; /* центрирование кнопки*/
+}
+
+.buy__bg {
+  background: linear-gradient(180deg, #bc10d8 0%, rgba(80, 0, 250, 0.93) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  font-size: 400px;
+  line-height: 400px; /* после уменьшения значения c 484px до 400px буквы поднимается вверх */
+  opacity: 0.1; /* задается 10% цвета */
+  position: absolute; /* ребенок класса buy */
+  z-index: -1; /* буквы оказываются под картинкой */
+  animation: line-text 6s linear 1s infinite;
+}
+
+/*----- Анимация букв oculus плывущих справа налево -----*/
+@keyframes line-text {
+  from {
+    transform: translateX(115%);
+    transform-origin: left center;
+  }
+
+  to {
+    transform: translateX(-115%);
+    transform-origin: right center;
+  }
+}
+
+/*---------- SECTION EQUIPMENT ----------*/
+.equipment {
+  margin-bottom: 100px;
+}
+
+.equipment__title {
+  margin-bottom: 50px;
+}
+
+.equipment__box {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px 30px;
+}
+
+.equipment__box-img {
+  margin-bottom: 10px;
+}
+
+.equipment__box-title {
+  background: linear-gradient(180deg, #bc10d8 0%, rgba(80, 0, 250, 0.93) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 36px;
+  line-height: 50px;
+  text-transform: uppercase;
+}
+
+.equipment__box-item--one {
+  grid-row: 1/-1;
+}
+
+.promo {
+  margin-bottom: 100px;
+}
+
+.promo__inner {
+  background-image: url(../images/promo.jpg);
+  min-height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+  position: relative; /* родитель promo__btn */
+}
+
+.promo__btn {
+  /*  кнопка GO */
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(180deg, #bc10d8 0%, rgba(80, 0, 250, 0.93) 100%);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute; /* ребенок promo__inner */
+  bottom: 80px; /* отступ снизу 80px */
+  left: 0; /* отступ слева 0 */
+  right: 0; /* отступ справа 0 */
+  margin: 0 auto; /* выравнивание по центру */
+}
+
+/*---------- SECTION ACCESSORIES ----------*/
+.accessories {
+  margin-bottom: 100px;
+}
+
+.accessories__title {
+  margin-bottom: 30px;
+}
+
+.accessories__text {
+  margin-bottom: 30px;
+  background: linear-gradient(180deg, #bc10d8 0%, rgba(80, 0, 250, 0.93) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 36px;
+  text-transform: uppercase;
+}
+
+.accessories__items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.accessories__item {
+  padding: 20px;
+  border: 1px solid;
+  border-image: linear-gradient(180deg, #bc10d8 0%, rgba(80, 0, 250, 0.93) 100%)
+    1; /*-- без цифры 1 не появляется border --*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.accessories__item-img {
+  margin-bottom: 10px;
+}
+
+.accessories__item-title {
+  font-size: 24px;
+  color: #070707;
+  min-height: 67px; /* все заголовки встают на один уровень, но текст после заголовков не выравнялся по высоте */
+}
+
+.accessories__item-text {
+  margin-bottom: 35px;
+  margin-top: auto;
+}
+
+.accessories__item-price {
+  font-weight: 700;
+  line-height: 18px;
+  color: #070707;
+  margin-bottom: 20px;
+  margin-top: auto;
+}
+
+.accessories__item-btn {
+  border: 1px solid;
+  border-image: linear-gradient(180deg, #bc10d8 0%, rgba(80, 0, 250, 0.93) 100%)
+    1; /*-- без цифры 1 не появляется border --*/
+  padding: 6px;
+  font-weight: 700;
+  background: linear-gradient(180deg, #bc10d8 0%, rgba(80, 0, 250, 0.93) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  width: 100%;
+}
+
+/*---------- SECTION CONTACTS ----------*/
+.contacts {
+  margin-bottom: 100px;
+}
+
+.contacts__title {
+  font-size: 24px;
+  line-height: 33px;
+  color: #070707;
+  margin-bottom: 10px;
+}
+
+.contacts__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.contacts__form {
+  flex-basis: 600px;
+}
+
+.form {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.form__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #cacad6;
+  padding: 22px 70px 22px 0;
+}
+
+.form__input::placeholder {
+  font-family: "Helvetica", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: #cacad6;
+}
+
+.form__btn {
+  width: 50px;
+  height: 50px;
+  background-color: #cacad6;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #5c5c5e;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+}
+
+.contact__text {
+  font-size: 13px;
+}
+
+.contacts__email {
+}
+
+.footer {
+  border-top: 1px solid #cacad6;
+  border-bottom: 1px solid #cacad6;
+  margin-bottom: 44px;
+  padding: 30px 0;
+}
+
+.social {
+  display: flex;
+  gap: 20px;
+  justify-self: end;
+}
